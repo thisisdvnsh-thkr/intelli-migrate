@@ -1,0 +1,7 @@
+[
+  {"orderID": "ORD001", "customerName": "John Doe", "customerEmail": "john@example.com", "productName": "Laptop Pro", "price": 1299.99, "quantity": 1, "orderDate": "2024-01-15"},
+  {"orderID": "ORD002", "customerName": "Jane Smith", "customerEmail": "jane@example.com", "productName": "Wireless Mouse", "price": 49.99, "quantity": 2, "orderDate": "2024-01-16"},
+  {"orderID": "ORD003", "customerName": "Bob Wilson", "customerEmail": "bob@example.com", "productName": "USB-C Hub", "price": 79.99, "quantity": 1, "orderDate": "2024-01-17"},
+  {"orderID": "ORD004", "customerName": "Alice Brown", "customerEmail": "alice@example.com", "productName": "Monitor 27inch", "price": 399.99, "quantity": 1, "orderDate": "2024-01-18"},
+  {"orderID": "ORD005", "customerName": "Charlie Davis", "customerEmail": "charlie@example.com", "productName": "Keyboard Mechanical", "price": 149.99, "quantity": 1, "orderDate": "2024-01-19"}
+]

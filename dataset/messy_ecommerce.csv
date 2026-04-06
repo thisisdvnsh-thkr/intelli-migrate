@@ -1,0 +1,101 @@
+cust_id,cust_nm,email_addr,phone_no,addr,City,ST,ZIP,ord_dt,prod_nm,prod_cat,qty,unit_price,total_amt
+1,Michael Smith,michaelsmith181@yahoo.com,+13112156938,6051 Main St,San Diego,CA,77609,08-01-2026,Yoga Mat,Sports,3,29.99,89.97
+2,Jane Miller,janemiller920@yahoo.com,,2478 Park St,San Antonio,TX,52059,2025-10-20,Blender,Kitchen,3,49.99,149.97
+3,William Garcia,williamgarcia559@outlook.com,554-917-1253,1725 Elm St,Los Angeles,CA,80630,2025-04-09,Yoga Mat,Sports,4,29.99,119.96
+4,Emily Jones,emilyjones424@yahoo.com,9092084821,1103 Oak St,San Diego,CA,86245,TBD,Headphones,Electronics,1,149.99,149.99
+5,David Jones,davidjones697@yahoo.com,(413) 583-2544,6948 Oak St,New York,NY,32832,2026-03-01T20:11:58,Smartphone,Electronics,5,699.99,3499.95
+6,John Garcia,johngarcia537@yahoo.com,+12563187214,8307 Main St,New York,NY,46208,2024-13-45,Running Shoes,Sports,3,129.99,389.97
+7,Lisa Williams,lisawilliams70@gmail.com,351-728-3527,7856 Oak St,San Diego,CA,10683,07/17/2025,Laptop,Electronics,5,999.99,4999.95
+8,Michael Brown,michaelbrown184@outlook.com,5914221370,327 Park St,San Antonio,TX,64655,2026-03-16T20:11:58,Coffee Maker,Kitchen,3,79.99,239.97
+9,David Jones,davidjones408@outlook.com,+15491073621,5968 Oak St,Chicago,IL,62820,12/12/2025,Headphones,Electronics,1,149.99,149.99
+10,Emily Jones,emilyjones371@outlook.com,+19019048159,1019 Oak St,Chicago,IL,32213,2025-05-21T20:11:58,Yoga Mat,Sports,5,-100,149.95
+11,Jennifer Smith,@gmail.com,+18895146127,4018 Park St,Philadelphia,PA,40997,01/22/2026,Keyboard,Electronics,5,89.99,449.95
+12,David Garcia,davidgarcia681@gmail.com,566-311-2045,5634 Main St,Phoenix,AZ,93669,2025-07-25,Smartphone,Electronics,3,699.99,2099.97
+13,John Jones,johnjones@,+12524289978,4541 Main St,,AZ,58889,01/08/2026,Headphones,Electronics,4,149.99,599.96
+14,David Smith,davidsmith309@gmail.com,+19172274832,965 Elm St,San Diego,CA,67383,02/18/2026,Desk Chair,Furniture,many,249.99,249.99
+15,Jane Brown,janebrowngmail.com,+13384188958,6371 Oak St,Philadelphia,PA,49064,21-02-2026,Desk Chair,Furniture,5,249.99,1249.95
+16,Robert Davis,robertdavis883@gmail.com,+14538841077,1172 Elm St,San Diego,CA,95290,2026-03-28,Headphones,Electronics,5,149.99,749.95
+17,Emily Garcia,emilygarcia828@yahoo.com,251-222-5215,7371 Elm St,San Antonio,TX,64171,2025-05-12T20:11:58,Keyboard,Electronics,2,89.99,179.98
+18,Emily Miller,emilymiller562@gmail.com,+17799585692,645 Main St,Phoenix,AZ,46013,2025-08-06,Desk Chair,Furniture,1,249.99,249.99
+19,Michael Garcia,michaelgarcia177@yahoo.com,+18135638556,9890 Oak St,San Antonio,TX,60348,2025-06-01,Running Shoes,Sports,1,129.99,129.99
+20,William Johnson,williamjohnson126@yahoo.com,3778915273,5395 Oak St,New York,NY,67284,02/02/2026,Keyboard,Electronics,2,89.99,179.98
+21,Sarah Miller,sarahmiller42@email.com,call-me,8408 Park St,Houston,TX,18145,11/30/2025,Headphones,Electronics,4,149.99,599.96
+22,John Johnson,johnjohnson513@email.com,(881) 605-4464,6553 Oak St,Chicago,IL,19530,,Monitor,Electronics,3,399.99,1199.97
+23,Jane Jones,janejones636@email.com,430-511-4508,3348 Elm St,Houston,TX,64337,11/21/2025,Blender,Kitchen,2,49.99,99.98
+24,Emily Rodriguez,emilyrodriguez88@outlook.com,853-412-7333,3104 Park St,Los Angeles,CA,89003,2025-07-13,Headphones,Electronics,1,149.99,149.99
+25,William Garcia,williamgarcia404@email.com,+18794644378,3354 Elm St,San Diego,CA,61790,2026-02-22T20:11:58,Smartphone,Electronics,4,699.99,2799.96
+26,John Miller,johnmiller694@gmail.com,8414541295,7487 Park St,Los Angeles,CA,22881,09/15/2025,Keyboard,Electronics,1,89.99,89.99
+27,John Brown,johnbrown329@outlook.com,(824) 426-3897,4515 Elm St,Los Angeles,CA,65921,2025-09-10,Desk Chair,Furniture,2,249.99,499.98
+28,Jennifer Smith,jennifersmith271@gmail.com,7211310768,4811 Park St,Chicago,IL,37782,2026-01-19T20:11:58,Monitor,Electronics,2,399.99,799.98
+29,Lisa Davis,lisadavis32@gmail.com,+15904492649,4318 Elm St,Houston,TX,12497,09/14/2025,Blender,Kitchen,-4,49.99,199.96
+30,Robert Brown,robertbrown50@outlook.com,123,2182 Oak St,New York,NY,14107,29-08-2025,Desk Chair,Furniture,many,249.99,499.98
+31,Emily Brown,emilybrown323@gmail.com,247-757-6316,8928 Park St,San Diego,CA,24480,02/08/2026,Blender,Kitchen,4,49.99,199.96
+32,Robert Williams,robertwilliams259@yahoo.com,,2344 Park St,Phoenix,AZ,32510,09-07-2025,Headphones,Electronics,5,149.99,749.95
+33,Emily Rodriguez,emilyrodriguez885@email.com,898-620-3569,3963 Oak St,Chicago,IL,53220,2025-05-28,Desk Chair,Furniture,1,249.99,249.99
+34,Emily Miller,emilymiller8@email.com,919-755-5730,732 Main St,San Antonio,TX,68022,03/06/2026,Yoga Mat,Sports,1,29.99,29.99
+35,David Rodriguez,davidrodriguez732@email.com,,8456 Elm St,New York,NY,18839,03/23/2026,Blender,Kitchen,1,49.99,49.99
+36,Jennifer Miller,jennifermiller951@email.com,(663) 394-7159,1084 Main St,San Antonio,TX,,2026-02-24T20:11:58,Laptop,Electronics,3,999.99,2999.97
+37,Jennifer Rodriguez,jenniferrodriguez462@email.com,222-120-8856,2318 Oak St,San Diego,CA,20440,24-01-2026,Laptop,Electronics,2,999.99,1999.98
+38,Lisa Smith,lisasmith597@yahoo.com,5710604729,519 Park St,New York,NY,99413,27-06-2025,Headphones,Electronics,1,149.99,149.99
+39,Emily Rodriguez,emilyrodriguez145@email.com,+14438380328,1204 Main St,New York,NY,88380,not-a-date,Laptop,Electronics,5,999.99,4999.95
+40,Sarah Smith,sarahsmith807@email.com,(272) 209-4428,2194 Oak St,Houston,TX,32059,01/21/2026,Blender,Kitchen,3,49.99,149.97
+41,David Martinez,davidmartinez945@gmail.com,+12293917358,9433 Park St,Houston,TX,73444,10/10/2025,Monitor,Electronics,5,399.99,1999.95
+42,David Martinez,davidmartinez994@outlook.com,+19826508642,7215 Main St,New York,NY,10853,2025-10-26,Laptop,Electronics,5,999.99,4999.95
+43,Emily Brown,emilybrown980@outlook.com,9615682096,3753 Elm St,Philadelphia,PA,17929,2025-05-14,Yoga Mat,Sports,1,29.99,29.99
+44,Sarah Smith,sarahsmith362@gmail.com,+13353197962,6778 Park St,Philadelphia,PA,85581,2024-13-45,Yoga Mat,Sports,1,0,29.99
+45,Sarah Martinez,sarahmartinez954@outlook.com,325-747-4448,4809 Elm St,San Diego,CA,45830,2025-05-05,Blender,Kitchen,1,49.99,49.99
+46,Emily Johnson,@gmail.com,+13773524629,8035 Main St,Los Angeles,CA,14548,01-04-2026,Coffee Maker,Kitchen,1,79.99,79.99
+47,William Garcia,williamgarcia194@yahoo.com,(842) 618-2409,9640 Park St,Los Angeles,CA,83094,2025-08-27,Yoga Mat,Sports,5,29.99,149.95
+48,Sarah Smith,sarahsmith521@gmail.com,7276300026,8119 Oak St,San Diego,CA,48904,2026-04-01T20:11:58,Headphones,Electronics,3,149.99,449.97
+49,Jennifer Smith,jennifersmith814@yahoo.com,+13447114957,1540 Main St,Phoenix,AZ,50945,09-12-2025,Keyboard,Electronics,5,89.99,449.95
+50,John Garcia,johngarcia563@outlook.com,(559) 459-3839,7214 Main St,Philadelphia,PA,38322,12/03/2025,Keyboard,Electronics,5,89.99,449.95
+51,Jane Garcia,janegarcia731@yahoo.com,8557452012,306 Oak St,Philadelphia,PA,73208,09/23/2025,Coffee Maker,Kitchen,2,79.99,159.98
+52,Sarah Smith,sarahsmith544@email.com,(516) 310-6528,9835 Elm St,San Diego,CA,81544,2026-02-12T20:11:58,Running Shoes,Sports,3,129.99,389.97
+53,Sarah Garcia,sarahgarcia331@email.com,205-482-1299,6779 Main St,New York,NY,22723,2025-05-03T20:11:58,Smartphone,Electronics,3,699.99,2099.97
+54,Lisa Martinez,lisamartinez505@email.com,4995821955,428 Park St,Phoenix,AZ,64330,not-a-date,Keyboard,Electronics,2,89.99,179.98
+55,Michael Brown,michaelbrown909@gmail.com,648-640-6255,3176 Oak St,Chicago,IL,73045,2025-06-21,Monitor,Electronics,1,399.99,399.99
+56,Jane Jones,janejones836@gmail.com,3287999377,635 Park St,Philadelphia,PA,24728,2025-07-09,Smartphone,Electronics,4,699.99,2799.96
+57,Jane Williams,janewilliams781@email.com,(264) 897-5599,2905 Oak St,Philadelphia,PA,32448,2025-09-14T20:11:58,Coffee Maker,Kitchen,1,79.99,79.99
+58,Robert Smith,robertsmith838@email.com,(134) 874-2512,9942 Park St,Chicago,IL,35974,12/27/2025,Desk Chair,Furniture,2,249.99,499.98
+59,Jennifer Johnson,jenniferjohnson@,+15858716645,7027 Elm St,San Diego,CA,12271,01/04/2026,Yoga Mat,Sports,2,29.99,59.98
+60,William Williams,williamwilliams18@outlook.com,000-000-0000,1074 Elm St,Los Angeles,CA,11404,2026-01-08,Keyboard,Electronics,3,89.99,269.97
+61,Lisa Brown,lisabrown967@yahoo.com,(749) 808-7584,6124 Park St,San Diego,CA,85475,12-07-2025,Keyboard,Electronics,4,89.99,359.96
+62,Sarah Smith,sarahsmith600@outlook.com,158-616-8764,3684 Park St,Phoenix,AZ,84393,2025-12-24T20:11:58,Yoga Mat,Sports,1,29.99,29.99
+63,David Miller,davidmiller831@email.com,+12662904389,3798 Main St,Houston,TX,68787,2025-06-14,Running Shoes,Sports,5,129.99,649.95
+64,John Jones,johnjones851@outlook.com,+12643977198,4155 Oak St,Phoenix,AZ,61757,09-02-2026,Keyboard,Electronics,1,89.99,89.99
+65,Robert Martinez,robertmartinez886@email.com,(921) 856-6569,8289 Elm St,Houston,TX,33338,2025-04-11T20:11:58,Coffee Maker,Kitchen,2,79.99,159.98
+66,Sarah Martinez,sarahmartinez878@gmail.com,+11226904964,1008 Park St,Phoenix,AZ,97443,02/18/2026,Coffee Maker,Kitchen,5,79.99,399.95
+67,Sarah Smith,@gmail.com,351-251-7548,5384 Main St,Phoenix,AZ,86959,23-08-2025,Keyboard,Electronics,5,89.99,449.95
+68,John Miller,@gmail.com,(871) 350-8353,1709 Park St,Chicago,IL,23671,27-08-2025,Monitor,Electronics,2,399.99,799.98
+69,Michael Johnson,michaeljohnson619@yahoo.com,942-641-2922,6493 Park St,Philadelphia,PA,72647,2025-05-19T20:11:58,Running Shoes,Sports,3,129.99,389.97
+70,Jane Davis,janedavis687@email.com,(928) 570-5962,383 Park St,New York,NY,96609,07/12/2025,Yoga Mat,Sports,2,29.99,59.98
+71,Michael Miller,michaelmiller191@outlook.com,482-687-4561,1489 Oak St,Chicago,IL,68012,2025-06-20,Desk Chair,Furniture,4,249.99,999.96
+72,Sarah Brown,sarahbrown736@yahoo.com,+18540242098,8907 Oak St,Houston,TX,72152,2024-13-45,Smartphone,Electronics,5,699.99,3499.95
+73,Lisa Miller,lisamiller796@gmail.com,694-801-8426,7418 Oak St,Los Angeles,CA,22202,2025-08-28,Laptop,Electronics,-1,999.99,1999.98
+74,David Smith,davidsmith627@gmail.com,(490) 702-9148,5318 Park St,Phoenix,AZ,21228,2025-06-05T20:11:58,Coffee Maker,Kitchen,2,79.99,159.98
+75,Emily Rodriguez,emilyrodriguez334@email.com,1553009449,9468 Elm St,Los Angeles,CA,30958,04/22/2025,Running Shoes,Sports,3,129.99,389.97
+76,John Smith,johnsmithgmail.com,5509823358,3779 Oak St,Los Angeles,CA,73069,2025-08-07,Monitor,Electronics,5,399.99,1999.95
+77,Michael Brown,michaelbrown960@yahoo.com,(204) 599-9161,2045 Main St,Philadelphia,PA,50296,2024-13-45,Smartphone,Electronics,4,699.99,2799.96
+78,Jennifer Williams,jenniferwilliams221@gmail.com,2829621954,8332 Park St,San Antonio,TX,48072,08/09/2025,Smartphone,Electronics,5,699.99,3499.95
+79,Emily Miller,emilymiller179@email.com,+14947185581,4797 Oak St,San Antonio,TX,25054,2026-01-17T20:11:58,Yoga Mat,Sports,2,29.99,59.98
+80,John Smith,johnsmith369@yahoo.com,(711) 645-7201,1035 Main St,Chicago,IL,14811,23-11-2025,Laptop,Electronics,5,999.99,4999.95
+81,Emily Jones,emilyjones512@yahoo.com,565-479-7448,6237 Elm St,Chicago,IL,55009,11/26/2025,Laptop,Electronics,4,999999.99,3999.96
+82,Lisa Smith,lisasmith@,+18009662564,8506 Main St,Chicago,IL,92490,2026-01-10T20:11:58,Keyboard,Electronics,4,89.99,359.96
+83,Jennifer Smith,jennifersmith138@email.com,324-427-4777,8187 Park St,Los Angeles,CA,20253,2025-11-02T20:11:58,Monitor,Electronics,5,399.99,1999.95
+84,David Johnson,davidjohnson116@outlook.com,+12442059634,3555 Main St,San Diego,CA,35228,18-01-2026,Keyboard,Electronics,2,89.99,179.98
+85,Jane Miller,janemiller13@gmail.com,+14130434616,6888 Park St,Philadelphia,PA,38226,2026-02-16T20:11:58,Coffee Maker,Kitchen,2,79.99,159.98
+86,David Brown,davidbrown706@email.com,4813282007,6214 Oak St,San Antonio,TX,61892,2025-12-30T20:11:58,Laptop,Electronics,2,999.99,1999.98
+87,Michael Jones,michaeljonesgmail.com,418-585-3589,7948 Oak St,Chicago,IL,83807,2025-04-11T20:11:58,Smartphone,Electronics,1,699.99,699.99
+88,Sarah Smith,sarahsmith2@outlook.com,3438329720,5618 Oak St,Los Angeles,CA,47804,2025-09-19T20:11:58,Smartphone,Electronics,3,699.99,2099.97
+89,Sarah Davis,sarahdavis618@yahoo.com,(814) 926-8842,9973 Park St,Chicago,IL,84614,14-10-2025,Monitor,Electronics,-3,399.99,1599.96
+90,Lisa Miller,lisamiller98@outlook.com,,7448 Oak St,San Diego,CA,11668,2026-02-02T20:11:58,Laptop,Electronics,4,999.99,3999.96
+91,Michael Brown,michaelbrown420@gmail.com,357-247-4904,8828 Main St,Chicago,IL,66828,2025-04-09T20:11:58,Headphones,Electronics,1,149.99,149.99
+92,John Smith,johnsmith586@outlook.com,+16684643490,5809 Elm St,Phoenix,AZ,22545,08/16/2025,Desk Chair,Furniture,1,249.99,249.99
+93,Lisa Garcia,lisagarcia277@outlook.com,490-137-3480,6002 Elm St,Los Angeles,CA,26169,2025-07-17T20:11:58,Laptop,Electronics,2,999.99,1999.98
+94,David Johnson,davidjohnsongmail.com,508-580-7447,3945 Main St,Phoenix,AZ,43874,12-02-2026,Laptop,Electronics,2,999.99,1999.98
+95,Jennifer Smith,jennifersmith189@yahoo.com,+15356410421,7414 Park St,Los Angeles,CA,73910,,Coffee Maker,Kitchen,5,79.99,399.95
+96,Sarah Martinez,sarahmartinez114@email.com,154-800-1367,3418 Oak St,Chicago,IL,24059,10-06-2025,Monitor,Electronics,3,399.99,1199.97
+97,Jane Smith,janesmith552@yahoo.com,(215) 485-8951,2603 Elm St,Houston,TX,66371,2025-06-30,Desk Chair,Furniture,4,249.99,999.96
+98,Jennifer Garcia,jennifergarcia639@gmail.com,3594014460,9110 Elm St,San Diego,CA,44287,2026-02-02,Laptop,Electronics,1,999.99,999.99
+99,Jennifer Smith,jennifersmith485@outlook.com,8278003141,9038 Oak St,Los Angeles,CA,65887,2025-08-18,Headphones,Electronics,2,149.99,299.98
+100,John Brown,johnbrown460@outlook.com,+17267834911,1708 Oak St,Los Angeles,CA,54264,2025-07-15,Laptop,Electronics,3,999999.99,2999.97

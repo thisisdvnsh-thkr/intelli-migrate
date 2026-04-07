@@ -2,6 +2,7 @@ import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AuthProvider } from './context/AuthContext'
 import { MigrationProvider } from './context/MigrationContext'
 import { AnimatePresence, motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 import Sidebar from './components/Sidebar'
 import Dashboard from './pages/Dashboard'
 import Upload from './pages/Upload'
@@ -14,6 +15,124 @@ import Signup from './pages/Signup'
 import Landing from './pages/Landing'
 import Settings from './pages/Settings'
 import Help from './pages/Help'
+import { checkHealth } from './lib/api'
+
+// Backend Wake-up Loading Screen
+function BackendLoader({ onReady }) {
+  const [status, setStatus] = useState('connecting')
+  const [dots, setDots] = useState('')
+  const [attempt, setAttempt] = useState(0)
+
+  useEffect(() => {
+    const dotInterval = setInterval(() => {
+      setDots(prev => prev.length >= 3 ? '' : prev + '.')
+    }, 500)
+    return () => clearInterval(dotInterval)
+  }, [])
+
+  useEffect(() => {
+    const wakeBackend = async () => {
+      try {
+        setStatus('connecting')
+        await checkHealth()
+        setStatus('ready')
+        setTimeout(() => onReady(), 500)
+      } catch (error) {
+        if (attempt < 3) {
+          setStatus('waking')
+          setTimeout(() => setAttempt(a => a + 1), 5000)
+        } else {
+          setStatus('error')
+        }
+      }
+    }
+    wakeBackend()
+  }, [attempt, onReady])
+
+  return (
+    <div className="fixed inset-0 bg-black flex items-center justify-center z-50">
+      <div className="text-center">
+        {/* Animated Logo */}
+        <motion.div
+          initial={{ scale: 0.8, opacity: 0 }}
+          animate={{ scale: 1, opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="mb-8"
+        >
+          <div className="w-24 h-24 mx-auto mb-6 relative">
+            <motion.div
+              animate={{ rotate: 360 }}
+              transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
+              className="absolute inset-0 rounded-full border-4 border-transparent border-t-blue-500 border-r-purple-500"
+            />
+            <div className="absolute inset-2 rounded-full bg-gradient-to-br from-blue-600 to-purple-600 flex items-center justify-center">
+              <svg className="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+              </svg>
+            </div>
+          </div>
+          <h1 className="text-3xl font-bold text-white mb-2">Intelli-Migrate</h1>
+          <p className="text-gray-400">AI-Powered Data Migration</p>
+        </motion.div>
+
+        {/* Status Messages */}
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+        >
+          {status === 'connecting' && (
+            <div className="flex items-center justify-center gap-3 text-blue-400">
+              <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+              <span>Connecting to server{dots}</span>
+            </div>
+          )}
+          {status === 'waking' && (
+            <div className="space-y-3">
+              <div className="flex items-center justify-center gap-3 text-yellow-400">
+                <div className="w-2 h-2 bg-yellow-400 rounded-full animate-pulse" />
+                <span>Waking up AI agents{dots}</span>
+              </div>
+              <p className="text-gray-500 text-sm">Free tier servers sleep after inactivity</p>
+              <div className="w-48 mx-auto bg-gray-800 rounded-full h-1.5 mt-4">
+                <motion.div
+                  className="bg-gradient-to-r from-blue-500 to-purple-500 h-1.5 rounded-full"
+                  initial={{ width: "0%" }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 5, ease: "linear" }}
+                />
+              </div>
+            </div>
+          )}
+          {status === 'ready' && (
+            <div className="flex items-center justify-center gap-3 text-green-400">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+              </svg>
+              <span>All systems ready!</span>
+            </div>
+          )}
+          {status === 'error' && (
+            <div className="space-y-4">
+              <div className="flex items-center justify-center gap-3 text-red-400">
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                </svg>
+                <span>Connection failed</span>
+              </div>
+              <button
+                onClick={() => setAttempt(0)}
+                className="px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors"
+              >
+                Retry Connection
+              </button>
+            </div>
+          )}
+        </motion.div>
+      </div>
+    </div>
+  )
+}
 
 // Page transition wrapper
 function PageTransition({ children }) {
@@ -82,6 +201,22 @@ function AppRoutes() {
 }
 
 export default function App() {
+  const [backendReady, setBackendReady] = useState(false)
+  const [skipLoader, setSkipLoader] = useState(false)
+
+  // Skip loader for public pages on initial load
+  useEffect(() => {
+    const path = window.location.pathname
+    if (path === '/' || path === '/login' || path === '/signup') {
+      setSkipLoader(true)
+    }
+  }, [])
+
+  // Show loader only for dashboard routes
+  if (!backendReady && !skipLoader) {
+    return <BackendLoader onReady={() => setBackendReady(true)} />
+  }
+
   return (
     <BrowserRouter>
       <AuthProvider>

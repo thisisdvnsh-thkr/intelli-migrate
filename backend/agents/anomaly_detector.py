@@ -78,10 +78,12 @@ class AnomalyDetector:
         """
         self.contamination = contamination
         self.isolation_forest = None
-        self._load_ml_model()
+        self._ml_loaded = False
     
     def _load_ml_model(self):
-        """Load Isolation Forest model"""
+        """Load Isolation Forest model (lazy loading)"""
+        if self._ml_loaded:
+            return
         try:
             from sklearn.ensemble import IsolationForest
             self.isolation_forest = IsolationForest(
@@ -90,9 +92,11 @@ class AnomalyDetector:
                 n_estimators=100
             )
             print("✅ Anomaly Detection Model loaded: IsolationForest")
+            self._ml_loaded = True
         except ImportError:
             print("⚠️ scikit-learn not installed. Using rule-based detection only.")
             self.isolation_forest = None
+            self._ml_loaded = True
     
     def detect_anomalies(self, records: List[Dict], schema: Dict = None) -> AnomalyReport:
         """
@@ -117,7 +121,9 @@ class AnomalyDetector:
             # 3. Pattern validation
             anomalies.extend(self._detect_pattern_violations(records))
             
-            # 4. Statistical outliers (if ML available)
+            # 4. Statistical outliers (if ML available) - lazy load
+            if not self._ml_loaded:
+                self._load_ml_model()
             if self.isolation_forest:
                 try:
                     anomalies.extend(self._detect_statistical_outliers(records))

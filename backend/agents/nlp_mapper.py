@@ -100,20 +100,25 @@ class NLPMapper:
         self.confidence_threshold = confidence_threshold
         self.model = None
         self._embeddings_cache = {}
-        self._load_model()
+        self._model_loaded = False
     
     def _load_model(self):
-        """Load sentence transformer model for semantic similarity"""
+        """Load sentence transformer model for semantic similarity (lazy loading)"""
+        if self._model_loaded:
+            return
         try:
             from sentence_transformers import SentenceTransformer
             self.model = SentenceTransformer('all-MiniLM-L6-v2')
             print("✅ NLP Model loaded: all-MiniLM-L6-v2")
+            self._model_loaded = True
         except ImportError:
             print("⚠️ sentence-transformers not installed. Using pattern matching only.")
             self.model = None
+            self._model_loaded = True
         except Exception as e:
             print(f"⚠️ Model load error: {e}. Using pattern matching.")
             self.model = None
+            self._model_loaded = True
     
     def map_schema(self, source_fields: List[str], domain: str = 'ecommerce') -> SchemaMappingResult:
         """
@@ -253,6 +258,11 @@ class NLPMapper:
     
     def _get_embedding(self, text: str):
         """Get embedding with caching"""
+        # Lazy load the model when first needed
+        if not self._model_loaded:
+            self._load_model()
+        if self.model is None:
+            return None
         if text not in self._embeddings_cache:
             self._embeddings_cache[text] = self.model.encode(text)
         return self._embeddings_cache[text]

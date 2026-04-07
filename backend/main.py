@@ -55,12 +55,32 @@ anomaly_detector = AnomalyDetector(contamination=0.1)
 normalizer = Normalizer()
 sql_generator = SQLGenerator(dialect='postgresql')
 
-# Session storage (use Redis/DB in production)
-sessions: Dict[str, Dict] = {}
+# Persistent session storage using files (survives Render restarts)
+SESSIONS_DIR = os.path.join(os.path.dirname(__file__), '..', 'sessions')
+os.makedirs(SESSIONS_DIR, exist_ok=True)
 
 # Temp directory for uploads
 TEMP_DIR = os.path.join(os.path.dirname(__file__), '..', 'temp')
 os.makedirs(TEMP_DIR, exist_ok=True)
+
+def save_session(session_id: str, data: Dict):
+    """Save session to file for persistence"""
+    filepath = os.path.join(SESSIONS_DIR, f"{session_id}.json")
+    with open(filepath, 'w') as f:
+        json.dump(data, f)
+
+def load_session(session_id: str) -> Optional[Dict]:
+    """Load session from file"""
+    filepath = os.path.join(SESSIONS_DIR, f"{session_id}.json")
+    if os.path.exists(filepath):
+        with open(filepath, 'r') as f:
+            return json.load(f)
+    return None
+
+def session_exists(session_id: str) -> bool:
+    """Check if session exists"""
+    filepath = os.path.join(SESSIONS_DIR, f"{session_id}.json")
+    return os.path.exists(filepath)
 
 
 # ============================================
@@ -192,8 +212,8 @@ async def upload_file(file: UploadFile = File(...)):
         if not result.success:
             raise HTTPException(status_code=400, detail=f"Parse error: {result.errors}")
         
-        # Store session data
-        sessions[session_id] = {
+        # Store session data (file-based for persistence)
+        session_data = {
             "created_at": datetime.now().isoformat(),
             "file_path": file_path,
             "file_name": file.filename,
@@ -210,6 +230,7 @@ async def upload_file(file: UploadFile = File(...)):
             "schema": {name: {"data_type": field.data_type, "nullable": field.nullable} 
                       for name, field in result.schema.items()}
         }
+        save_session(session_id, session_data)
         
         return {
             "session_id": session_id,
@@ -243,10 +264,10 @@ async def map_schema(session_id: str, domain: str = "ecommerce"):
     """
     Step 2: Map source columns to standardized names using NLP
     """
-    if session_id not in sessions:
+    if not session_exists(session_id):
         raise HTTPException(status_code=404, detail="Session not found")
     
-    session = sessions[session_id]
+    session = load_session(session_id)
     
     # Get source columns
     source_columns = list(session["schema"].keys())
@@ -266,6 +287,8 @@ async def map_schema(session_id: str, domain: str = "ecommerce"):
         mapping_result.mappings
     )
     
+    save_session(session_id, session)
+    
     return {
         "session_id": session_id,
         "status": "success",
@@ -284,10 +307,10 @@ async def detect_anomalies(session_id: str):
     """
     Step 3: Detect data quality issues and anomalies
     """
-    if session_id not in sessions:
+    if not session_exists(session_id):
         raise HTTPException(status_code=404, detail="Session not found")
     
-    session = sessions[session_id]
+    session = load_session(session_id)
     records = session.get("mapped_records", session["records"])
     
     # Run Anomaly Detector (Agent 3)
@@ -298,6 +321,8 @@ async def detect_anomalies(session_id: str):
     session["steps_completed"].append("anomaly_detection")
     session["anomaly_report"] = anomaly_detector.get_anomaly_summary(report)
     session["cleaned_records"] = report.cleaned_records
+    
+    save_session(session_id, session)
     
     return {
         "session_id": session_id,
@@ -317,10 +342,10 @@ async def normalize_data(session_id: str):
     """
     Step 4: Normalize data to 3NF
     """
-    if session_id not in sessions:
+    if not session_exists(session_id):
         raise HTTPException(status_code=404, detail="Session not found")
     
-    session = sessions[session_id]
+    session = load_session(session_id)
     records = session.get("cleaned_records", session.get("mapped_records", session["records"]))
     table_name = session.get("table_name", "data")
     
@@ -345,6 +370,8 @@ async def normalize_data(session_id: str):
     session["relationships"] = result.relationships
     session["erd_diagram"] = result.erd_diagram
     
+    save_session(session_id, session)
+    
     return {
         "session_id": session_id,
         "status": "success",
@@ -368,10 +395,10 @@ async def generate_sql(session_id: str, dialect: str = "postgresql"):
     """
     import traceback
     
-    if session_id not in sessions:
+    if not session_exists(session_id):
         raise HTTPException(status_code=404, detail="Session not found")
     
-    session = sessions[session_id]
+    session = load_session(session_id)
     
     if "normalized_tables" not in session:
         raise HTTPException(status_code=400, detail="Run normalization first")
@@ -397,6 +424,8 @@ async def generate_sql(session_id: str, dialect: str = "postgresql"):
         session["sql_script_path"] = sql_path
         session["sql_summary"] = sql_generator.get_sql_summary(script)
         
+        save_session(session_id, session)
+        
         return {
             "session_id": session_id,
             "status": "success",
@@ -416,10 +445,10 @@ async def generate_sql(session_id: str, dialect: str = "postgresql"):
 @app.get("/api/download-sql/{session_id}")
 async def download_sql(session_id: str):
     """Download generated SQL script"""
-    if session_id not in sessions:
+    if not session_exists(session_id):
         raise HTTPException(status_code=404, detail="Session not found")
     
-    session = sessions[session_id]
+    session = load_session(session_id)
     
     if "sql_script_path" not in session:
         raise HTTPException(status_code=400, detail="Generate SQL first")
@@ -440,10 +469,10 @@ async def deploy_database(session_id: str, config: DeployConfig):
     """
     Step 6: Deploy to database (Supabase or SQLite)
     """
-    if session_id not in sessions:
+    if not session_exists(session_id):
         raise HTTPException(status_code=404, detail="Session not found")
     
-    session = sessions[session_id]
+    session = load_session(session_id)
     
     if "sql_script_path" not in session:
         raise HTTPException(status_code=400, detail="Generate SQL first")
@@ -487,6 +516,8 @@ async def deploy_database(session_id: str, config: DeployConfig):
         "errors": result.errors
     }
     
+    save_session(session_id, session)
+    
     return {
         "session_id": session_id,
         "status": "success" if result.success else "error",
@@ -503,10 +534,10 @@ async def deploy_database(session_id: str, config: DeployConfig):
 @app.get("/api/session/{session_id}")
 async def get_session(session_id: str):
     """Get session status and data"""
-    if session_id not in sessions:
+    if not session_exists(session_id):
         raise HTTPException(status_code=404, detail="Session not found")
     
-    session = sessions[session_id]
+    session = load_session(session_id)
     
     return {
         "session_id": session_id,
@@ -529,10 +560,10 @@ async def get_session(session_id: str):
 @app.delete("/api/session/{session_id}")
 async def delete_session(session_id: str):
     """Delete session and cleanup files"""
-    if session_id not in sessions:
+    if not session_exists(session_id):
         raise HTTPException(status_code=404, detail="Session not found")
     
-    session = sessions[session_id]
+    session = load_session(session_id)
     
     # Cleanup files
     for path_key in ["file_path", "sql_script_path"]:
@@ -544,7 +575,10 @@ async def delete_session(session_id: str):
     if os.path.exists(db_path):
         os.remove(db_path)
     
-    del sessions[session_id]
+    # Delete session file
+    session_file = os.path.join(SESSIONS_DIR, f"{session_id}.json")
+    if os.path.exists(session_file):
+        os.remove(session_file)
     
     return {"status": "deleted", "session_id": session_id}
 

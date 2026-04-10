@@ -1,6 +1,6 @@
-# Intelli-Migrate: AI-Powered Data Migration SaaS
+# Intelli-Migrate — AI-Driven Data Migration & ETL Automation Platform
 
-> **College Major Project** - An intelligent data migration platform using a swarm of 5 AI agents to automate the ETL process from messy data to production-ready databases.
+> An AI-powered data migration platform leveraging a multi-agent architecture to automate ETL pipelines, schema mapping, anomaly detection, and database deployment.
 
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![Python](https://img.shields.io/badge/python-3.10+-green)
@@ -21,6 +21,28 @@
 | 💾 **Agent 5: SQL Generator** | SQLAlchemy | Generate DDL/DML and deploy to databases |
 
 ---
+## ⏳ System Workflow
+```
+Raw Data (JSON/CSV/XML)
+        │
+        ▼
+Agent 1: Parser Engine
+        │
+        ▼
+Agent 2: NLP Schema Mapping
+        │
+        ▼
+Agent 3: Anomaly Detection
+        │
+        ▼
+Agent 4: Data Normalization (3NF)
+        │
+        ▼
+Agent 5: SQL Generator
+        │
+        ▼
+Database Deployment
+```
 
 ## 🚀 Quick Start
 
@@ -79,6 +101,13 @@ python -m http.server 3000
 cd ../dataset
 python generate_messy_data.py
 ```
+---
+## 🚀 Business Impact
+
+- Reduces manual ETL effort by automating schema mapping and transformation
+- Enables rapid migration from unstructured to production-ready databases
+- Improves data quality through anomaly detection and normalization
+- Accelerates database deployment with auto-generated SQL scripts
 
 ---
 
@@ -284,12 +313,6 @@ Then update `API_BASE` in `frontend/index.html`.
 - ✅ **Multi-dialect SQL**: PostgreSQL, MySQL, SQLite
 - ✅ **ERD Generation**: Mermaid diagrams for visualization
 - ✅ **One-click Deployment**: Direct to Supabase or SQLite
-
----
-
-## 📄 License
-
-This project is created for educational purposes as a college major project.
 
 ---
 

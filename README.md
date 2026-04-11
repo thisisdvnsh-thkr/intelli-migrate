@@ -43,6 +43,16 @@ Agent 5: SQL Generator
         ▼
 Database Deployment
 ```
+## 📊 System Visualization
+
+### 🔄 End-to-End Pipeline
+![Pipeline](./visuals/pipeline.png)
+
+---
+
+### 🔍 Data Transformation (Unstructured → Structured)
+![Transformation](./visuals/transformation.png)
+
 
 ## 🚀 Quick Start
 

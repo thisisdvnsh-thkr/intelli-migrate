@@ -54,7 +54,7 @@ Database Deployment
 
 ### 🔍 Data Transformation (Unstructured → Structured)
 <p align="center">
-  <img src="./visuals/transformation.png" width="800"/>
+  <img src="./visuals/transformation" width="800"/>
 </p>
 
 ## 🚀 Quick Start

@@ -47,14 +47,14 @@ Database Deployment
 
 ### 🔄 End-to-End Pipeline
 <p align="center">
-  <img src="./visuals/pipeline.png" width="800"/>
+  <img src="./visuals/Pipeline.png" width="800"/>
 </p>
 
 ---
 
 ### 🔍 Data Transformation (Unstructured → Structured)
 <p align="center">
-  <img src="./visuals/transformation" width="800"/>
+  <img src="./visuals/transformation.png" width="800"/>
 </p>
 
 ## 🚀 Quick Start

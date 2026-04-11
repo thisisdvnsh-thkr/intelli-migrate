@@ -2,6 +2,14 @@
 
 > An AI-powered data migration platform leveraging a multi-agent architecture to automate ETL pipelines, schema mapping, anomaly detection, and database deployment.
 
+---
+## 🚀 Live Demo
+
+🔗 Frontend: [https://intelli-migrate.vercel.app](https://intelli-migrate.vercel.app)  
+🔗 Backend API: [https://your-render-url.onrender.com](https://new-intelli-migrate.onrender.com)
+> Upload messy data → see full pipeline → get SQL output
+
+---
 ![Version](https://img.shields.io/badge/version-1.0.0-blue)
 ![Python](https://img.shields.io/badge/python-3.10+-green)
 ![License](https://img.shields.io/badge/license-MIT-purple)
@@ -56,6 +64,29 @@ Database Deployment
 <p align="center">
   <img src="./visuals/transformation.png" width="800"/>
 </p>
+
+## 🏗️ System Design Decisions
+
+### Why Multi-Agent Architecture?
+- Enables modular processing where each stage (parsing, mapping, anomaly detection) is independently scalable
+- Improves maintainability compared to monolithic ETL pipelines
+
+### Why NLP for Schema Mapping?
+- Traditional rule-based mapping fails for inconsistent column names
+- NLP embeddings allow semantic matching (e.g., "cust_name" → "customer_name")
+
+### Why Isolation Forest for Anomaly Detection?
+- Efficient for high-dimensional tabular data
+- Works well without labeled anomaly data
+
+### Why Normalization (3NF)?
+- Ensures structured relational database design
+- Reduces redundancy and improves data integrity
+
+### Trade-offs
+- Slight increase in processing time due to multiple agents
+- Requires model dependencies (NLP + ML)
+
 
 ## 🚀 Quick Start
 
@@ -227,7 +258,14 @@ curl -X POST "http://localhost:8000/api/migrate" \
 ```
 
 ---
+## ⚠️ Limitations
 
+- Performance may vary for extremely large datasets (>1M records)
+- NLP mapping accuracy depends on input data quality
+- Limited support for complex nested JSON structures
+- Currently optimized for structured tabular outputs only
+
+---
 ## 🎓 Team Member Contributions
 
 | Team Member | Agent | Primary Files |
